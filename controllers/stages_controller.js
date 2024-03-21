@@ -1,18 +1,18 @@
 const bands = require('express').Router()
-const { Band } = require('../models')
+const { Stage } = require('../models')
 
-bands.get('/', async (req, res) =>{
+stages.get('/', async (req, res) =>{
   try {
-    const allBands = await Band.findAll()
+    const allStages = await Stage.findAll()
     res.json(allBands)
   } catch (e) {
     res.send(e.message)
   }
 })
 
-bands.get('/:id', async (req, res) => {
+stages.get('/:id', async (req, res) => {
   try {
-    const specificBand = await Band.findOne({
+    const specificStage = await Stage.findOne({
       where: { id: req.params.id }
     })
     res.json(specificBand)
@@ -21,40 +21,40 @@ bands.get('/:id', async (req, res) => {
   }
 })
 
-bands.post('/', async (req, res) => {
+stages.post('/', async (req, res) => {
   try {
-    const newBand = await Band.create(req.body)
+    const newStage = await Stage.create(req.body)
     res.json(newBand)
   } catch (e) {
     res.send(e.message)
   }
 })
 
-bands.put('/:id', async (req, res) => {
+stages.put('/:id', async (req, res) => {
   try {
     const { name, genre } = req.body
     if (!name && !genre) {
       throw Error('No fields to update')
     }
-    const [ numUpdated ] = await Band.update(
+    const [ numUpdated ] = await Stage.update(
       { name, genre },
       { where: { id: req.params.id } }
     )
-    res.send(`Updated ${numUpdated} band(s).`)
+    res.send(`Updated ${numUpdated} stage(s).`)
   } catch (e) {
     res.send(e.message)
   }
 })
 
-bands.delete('/:id', async (req, res) => {
+stages.delete('/:id', async (req, res) => {
   try {
-    const deleted = await Band.destroy({
+    const deleted = await Stage.destroy({
       where: { id: req.params.id }
     })
-    res.send(`Deleted ${deleted} band(s).`)
+    res.send(`Deleted ${deleted} stage(s).`)
   } catch (e) {
     res.send(e.message)
   }
 })
 
-module.exports = bands
+module.exports = stages

@@ -27,11 +27,9 @@ const testSequelize = async () => {
     }    
 }
 
-//const Band = require('./models/band')
-//await Band.create({
-//    name: "Flatbush Zombied",
-//    genre: "hiphop"
-//})
+// CONTROLLERS
+const bandsController = require('./controllers/bands_controller')
+app.use('/bands', bandsController)
 
 // LISTEN
 app.listen(process.env.PORT, () => {
