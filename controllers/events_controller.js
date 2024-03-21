@@ -1,4 +1,4 @@
-const bands  = require('express').Router()
+const bands = require('express').Router()
 const { Event } = require('../models')
 
 events.get('/', async (req, res) =>{
