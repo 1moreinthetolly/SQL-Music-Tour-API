@@ -9,7 +9,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      stage_id: {
+        type: Sequelize.INTEGER
+      },
+      stage_name: {
         type: Sequelize.STRING
       },
       createdAt: {

@@ -13,11 +13,11 @@ module.exports = {
      * }], {});
     */
     await queryInterface.bulkInsert('Bands', [
-      { name: 'Flatbush Zombies', createdAt: new Date(), updatedAt: new Date() },
-      { name: 'Linkin Park', createdAt: new Date(), updatedAt: new Date() },
-      { name: 'The Underachievers', createdAt: new Date(), updatedAt: new Date() },
-      { name: 'Pro Era', createdAt: new Date(), updatedAt: new Date() },
-      { name: 'Nirvana', createdAt: new Date(), updatedAt: new Date() }
+      { name: 'Flatbush Zombies', genre: 'rap', createdAt: new Date(), updatedAt: new Date() },
+      { name: 'Linkin Park', genre: 'rock', createdAt: new Date(), updatedAt: new Date() },
+      { name: 'The Underachievers', genre: 'rap', createdAt: new Date(), updatedAt: new Date() },
+      { name: 'Pro Era', genre: 'rap', createdAt: new Date(), updatedAt: new Date() },
+      { name: 'Nirvana', genre: 'rock', createdAt: new Date(), updatedAt: new Date() }
     ], {});
   },
 

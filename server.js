@@ -16,23 +16,30 @@ app.get('/', (req, res) => {
 })
 
 // DATABASE
-const { sequelize } = require('./models')
+//const { sequelize } = require('./models')
 //const sequelize = new Sequelize(process.env.DB_CONNECTION)
-const testSequelize = async () => {
-    try {
-        await sequelize.authenticate();
-        console.log('Database connection has been established successfully');
-    }   catch (error) {
-        console.error('Unable to connect to the database:', error);
-    }    
-}
+//const testSequelize = async () => {//
+//    try {
+//        await sequelize.authenticate();
+//        console.log('Database connection has been established successfully');
+//    }   catch (error) {
+//        console.error('Unable to connect to the database:', error);
+//    }    
+//}
 
 // CONTROLLERS
 const bandsController = require('./controllers/bands_controller')
 app.use('/bands', bandsController)
 
+const stagesController = require('./controllers/stages_controller')
+app.use('/stages', stagesController)
+
+const eventsController = require('./controllers/events_controller')
+app.use('/events', eventsController)
+
+
 // LISTEN
 app.listen(process.env.PORT, () => {
-    testSequelize()
+    //testSequelize()
     console.log(`🎸 Rockin' on port: ${process.env.PORT}`)
 })

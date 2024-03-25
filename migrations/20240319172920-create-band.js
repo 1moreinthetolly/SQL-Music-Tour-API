@@ -10,19 +10,18 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
-      },
-      totalMembers: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       genre: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
-      createdAt: {
+      available_start_time: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      end_time: {
         allowNull: false,
         type: Sequelize.DATE
       }
