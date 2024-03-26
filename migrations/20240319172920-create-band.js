@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Bands', {
-      id: {
+      band_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -18,11 +18,9 @@ module.exports = {
         allowNull: false,
       },
       available_start_time: {
-        allowNull: false,
         type: Sequelize.DATE
       },
       end_time: {
-        allowNull: false,
         type: Sequelize.DATE
       }
     });

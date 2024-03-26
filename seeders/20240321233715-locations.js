@@ -12,13 +12,10 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert('Stages', [
-      { name: 'Red Rocks', location_id:1 },
-      { name: 'SkyDome', location_id:2 },
-      { name: 'ACC', location_id:3 },
-      { name: 'Booth Amphitheater', location_id:4 },
-      { name: 'Molson Amphitheater', location_id:5 }
-    ], {});
+   await queryInterface.bulkInsert('location', [
+    { location: 'Toronto' },
+    { location: 'Raleigh' }
+   ])
   },
 
   async down (queryInterface, Sequelize) {
@@ -28,6 +25,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('Stages', null, {});
+    await queryInterface.bulkDelete('location', null, {});
   }
 };

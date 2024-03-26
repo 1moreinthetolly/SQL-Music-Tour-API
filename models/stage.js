@@ -1,30 +1,33 @@
 'use strict'
 const {
-  Model
+  Model, Deferrable
 } = require('sequelize');
+
+const Location = require('./location')
 module.exports = (sequelize, DataTypes) => {
   class Stage extends Model {
-    static associate({ Event, Stage, SetTime }) {
-      Stage.belongsToMany(Event, {
-        foreignKey: "stage_id",
-        as: "events",
-        through: Stage
-      })
-      Stage.hasMany(SetTime, {
-        foreignKey: "stage_id",
-        as: "set_times"
-      })
-    }
+    static associate(models) {
+    } 
   }
   Stage.init({
     stage_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
+      allowNull: false
     },
     stage_name: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    location_id: {
+      type:DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: Location,
+        key: 'location_id',
+        deferrable: Deferrable.INITIALLY_IMMEDIATE
+      }
     }
   }, {
     sequelize,

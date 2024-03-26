@@ -1,30 +1,19 @@
-'use strict'
+'use strict';
 const {
   Model
-} = require('sequelize')
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Event extends Model {
-    static associate({ Stage, MeetGreet, SetTime }) {
-      Event.belongsToMany(Stage, {
-        foreignKey: "event_id",
-        as: "stages",
-        through: Stage
-      })
-      Event.hasMany(MeetGreet, {
-        foreignKey: "event_id",
-        as: "meet_greets"
-      })
-      Event.hasMany(SetTime, {
-        foreignKey: "event_id",
-        as: "set_times"
-      })
+    static associate(models) {
+    
     }
   }
   Event.init({
     event_id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
+      allowNull: false
     },
     name: {
       type: DataTypes.STRING,
@@ -34,11 +23,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: false
     },
-    start_time: {
+    event_start_time: {
       type: DataTypes.DATE,
       allowNull: false
     },
-    end_time: {
+    event_end_time: {
       type: DataTypes.DATE,
       allowNull: false
     }
@@ -47,6 +36,6 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Event',
     tableName: 'events',
     timestamps: false
-  })
-  return Event
-}
+  });
+  return Event;
+};

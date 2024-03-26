@@ -1,6 +1,7 @@
-'use strict'
+'use strict';
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
+  async up(queryInterface, Sequelize) {
     await queryInterface.createTable('meet_greets', {
       meet_greet_id: {
         allowNull: false,
@@ -8,12 +9,8 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      event_id: {
-        type: Sequelize.SMALLINT,
-        allowNull: false
-      },
-      band_id: {
-        type: Sequelize.SMALLINT,
+      date: {
+        type: Sequelize.DATE,
         allowNull: false
       },
       meet_start_time: {
@@ -23,10 +20,26 @@ module.exports = {
       meet_end_time: {
         type: Sequelize.DATE,
         allowNull: false
+      },
+      event_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false, 
+        references: {
+          model: 'events', 
+          key: 'event_id'
+        }
+      },
+      band_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'bands', 
+          key: 'band_id'
+        }
       }
-    })
+    });
   },
-  down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('meet_greets')
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('meet_greets');
   }
-}
+};
